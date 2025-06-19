@@ -191,7 +191,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | AgoraConversationBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -729,6 +729,19 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AgoraConversationBlock".
+ */
+export interface AgoraConversationBlock {
+  /**
+   * The ID of the Agora conversation to embed. For example, for "https://agoracitizen.network/feed/conversation/1O9_pQ", the ID is "1O9_pQ".
+   */
+  conversationId: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'agoraConversation';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1018,6 +1031,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        agoraConversation?: T | AgoraConversationBlockSelect<T>;
       };
   meta?:
     | T
@@ -1114,6 +1128,15 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AgoraConversationBlock_select".
+ */
+export interface AgoraConversationBlockSelect<T extends boolean = true> {
+  conversationId?: T;
   id?: T;
   blockName?: T;
 }
