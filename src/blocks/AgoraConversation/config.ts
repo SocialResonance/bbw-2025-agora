@@ -1,4 +1,5 @@
 import type { Block } from 'payload'
+import { getAgoraId, validateAgoraIdOrUrl } from '@/utilities/agora'
 
 export const AgoraConversation: Block = {
   slug: 'agoraConversation',
@@ -12,7 +13,23 @@ export const AgoraConversation: Block = {
       admin: {
         description:
           'Enter the conversation ID or paste the full URL (e.g., https://agoracitizen.network/feed/conversation/1O9_pQ).',
+        components: {
+          Field: {
+            path: '@/blocks/AgoraConversation/ConversationIdComponent',
+          },
+        },
       },
+      hooks: {
+        beforeChange: [
+          ({ value }) => {
+            if (typeof value === 'string') {
+              return getAgoraId(value)
+            }
+            return value
+          },
+        ],
+      },
+      validate: validateAgoraIdOrUrl,
     },
   ],
   labels: {

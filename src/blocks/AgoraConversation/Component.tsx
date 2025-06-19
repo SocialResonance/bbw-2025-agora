@@ -9,21 +9,7 @@ export const AgoraConversationBlock: React.FC<Props> = ({ conversationId, classN
     return null
   }
 
-  const getIdFromUrl = (url: string) => {
-    try {
-      if (url.includes('/')) {
-        const parts = url.split('/').filter(Boolean)
-        return parts[parts.length - 1]
-      }
-      return url
-    } catch (e) {
-      console.error('Error parsing conversation ID from URL:', e)
-      return url
-    }
-  }
-
-  const id = getIdFromUrl(conversationId)
-  const src = `https://agoracitizen.network/feed/conversation/${id}`
+  const src = `https://agoracitizen.network/feed/conversation/${conversationId}`
 
   return (
     <div className={className}>
