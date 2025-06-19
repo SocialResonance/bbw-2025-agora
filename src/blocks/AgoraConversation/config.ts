@@ -6,12 +6,12 @@ export const AgoraConversation: Block = {
   fields: [
     {
       name: 'conversationId',
-      label: 'Conversation ID',
+      label: 'Conversation ID or URL',
       type: 'text',
       required: true,
       admin: {
         description:
-          'The ID of the Agora conversation to embed. For example, for "https://agoracitizen.network/feed/conversation/1O9_pQ", the ID is "1O9_pQ".',
+          'Enter the conversation ID or paste the full URL (e.g., https://agoracitizen.network/feed/conversation/1O9_pQ).',
       },
     },
   ],

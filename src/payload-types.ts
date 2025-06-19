@@ -733,7 +733,7 @@ export interface Form {
  */
 export interface AgoraConversationBlock {
   /**
-   * The ID of the Agora conversation to embed. For example, for "https://agoracitizen.network/feed/conversation/1O9_pQ", the ID is "1O9_pQ".
+   * Enter the conversation ID or paste the full URL (e.g., https://agoracitizen.network/feed/conversation/1O9_pQ).
    */
   conversationId: string;
   id?: string | null;
